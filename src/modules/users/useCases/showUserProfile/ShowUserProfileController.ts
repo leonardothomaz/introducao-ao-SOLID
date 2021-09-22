@@ -7,10 +7,9 @@ class ShowUserProfileController {
 
   handle(request: Request, response: Response): Response {
     try {
-      const { user_id } = request.headers;
-      const userTyped: string = user_id as string;
+      const { user_id } = request.params;
 
-      const user = this.showUserProfileUseCase.execute({ user_id: userTyped });
+      const user = this.showUserProfileUseCase.execute({ user_id });
 
       return response.json(user);
     } catch (err) {
